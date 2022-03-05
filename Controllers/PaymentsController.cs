@@ -9,22 +9,23 @@ using berkley_coursework.Models;
 
 namespace berkley_coursework.Controllers
 {
-    public class AddressesController : Controller
+    public class PaymentsController : Controller
     {
         private readonly ModelContext _context;
 
-        public AddressesController(ModelContext context)
+        public PaymentsController(ModelContext context)
         {
             _context = context;
         }
 
-        // GET: Addresses
+        // GET: Payments
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Address.ToListAsync());
+            var modelContext = _context.Payment.Include(p => p.Student);
+            return View(await modelContext.ToListAsync());
         }
 
-        // GET: Addresses/Details/5
+        // GET: Payments/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -32,64 +33,66 @@ namespace berkley_coursework.Controllers
                 return NotFound();
             }
 
-            var address = await _context.Address
-                .FirstOrDefaultAsync(m => m.AddressId == id);
-            if (address == null)
+            var payment = await _context.Payment
+                .Include(p => p.Student)
+                .FirstOrDefaultAsync(m => m.PaymentId == id);
+            if (payment == null)
             {
                 return NotFound();
             }
 
-            return View(address);
+            return View(payment);
         }
 
-        // GET: Addresses/Create
+        // GET: Payments/Create
         public IActionResult Create()
         {
+            ViewData["StudentId"] = new SelectList(_context.Student, "StudentId", "StudentId");
             return View();
         }
 
-        // POST: Addresses/Create
+        // POST: Payments/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AddressId,Country,City,Zip")] Address address)
+        public async Task<IActionResult> Create([Bind("PaymentId,StudentId,Amount,Year,Date")] Payment payment)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(address);
+                _context.Add(payment);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(address);
+            ViewData["StudentId"] = new SelectList(_context.Student, "StudentId", "StudentId", payment.StudentId);
+            return View(payment);
         }
 
-        // GET: Addresses/Edit/5
+        // GET: Payments/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            Console.WriteLine(id);
             if (id == null)
             {
                 return NotFound();
             }
 
-            var address = await _context.Address.FindAsync(id);
-            Console.WriteLine("Addressl ", address);
-            if (address == null)
+            var payment = await _context.Payment.FindAsync(id);
+            if (payment == null)
             {
                 return NotFound();
             }
-            return View(address);
+            ViewData["StudentId"] = new SelectList(_context.Student, "StudentId", "StudentId", payment.StudentId);
+            return View(payment);
         }
 
-        // POST: Addresses/Edit/5
+        // POST: Payments/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("AddressId,Country,City,Zip")] Address address)
+        public async Task<IActionResult> Edit(string id, [Bind("PaymentId,StudentId,Amount,Year,Date")] Payment payment)
         {
-            if (id != address.AddressId)
+            if (id != payment.PaymentId)
             {
                 return NotFound();
             }
@@ -98,12 +101,12 @@ namespace berkley_coursework.Controllers
             {
                 try
                 {
-                    _context.Update(address);
+                    _context.Update(payment);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AddressExists(address.AddressId))
+                    if (!PaymentExists(payment.PaymentId))
                     {
                         return NotFound();
                     }
@@ -114,10 +117,11 @@ namespace berkley_coursework.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(address);
+            ViewData["StudentId"] = new SelectList(_context.Student, "StudentId", "StudentId", payment.StudentId);
+            return View(payment);
         }
 
-        // GET: Addresses/Delete/5
+        // GET: Payments/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -125,30 +129,31 @@ namespace berkley_coursework.Controllers
                 return NotFound();
             }
 
-            var address = await _context.Address
-                .FirstOrDefaultAsync(m => m.AddressId == id);
-            if (address == null)
+            var payment = await _context.Payment
+                .Include(p => p.Student)
+                .FirstOrDefaultAsync(m => m.PaymentId == id);
+            if (payment == null)
             {
                 return NotFound();
             }
 
-            return View(address);
+            return View(payment);
         }
 
-        // POST: Addresses/Delete/5
+        // POST: Payments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var address = await _context.Address.FindAsync(id);
-            _context.Address.Remove(address);
+            var payment = await _context.Payment.FindAsync(id);
+            _context.Payment.Remove(payment);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AddressExists(string id)
+        private bool PaymentExists(string id)
         {
-            return _context.Address.Any(e => e.AddressId == id);
+            return _context.Payment.Any(e => e.PaymentId == id);
         }
     }
 }

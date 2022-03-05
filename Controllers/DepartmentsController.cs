@@ -9,22 +9,22 @@ using berkley_coursework.Models;
 
 namespace berkley_coursework.Controllers
 {
-    public class AddressesController : Controller
+    public class DepartmentsController : Controller
     {
         private readonly ModelContext _context;
 
-        public AddressesController(ModelContext context)
+        public DepartmentsController(ModelContext context)
         {
             _context = context;
         }
 
-        // GET: Addresses
+        // GET: Departments
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Address.ToListAsync());
+            return View(await _context.Department.ToListAsync());
         }
 
-        // GET: Addresses/Details/5
+        // GET: Departments/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -32,64 +32,62 @@ namespace berkley_coursework.Controllers
                 return NotFound();
             }
 
-            var address = await _context.Address
-                .FirstOrDefaultAsync(m => m.AddressId == id);
-            if (address == null)
+            var department = await _context.Department
+                .FirstOrDefaultAsync(m => m.DepartmentId == id);
+            if (department == null)
             {
                 return NotFound();
             }
 
-            return View(address);
+            return View(department);
         }
 
-        // GET: Addresses/Create
+        // GET: Departments/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Addresses/Create
+        // POST: Departments/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AddressId,Country,City,Zip")] Address address)
+        public async Task<IActionResult> Create([Bind("DepartmentId,Name,Description")] Department department)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(address);
+                _context.Add(department);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(address);
+            return View(department);
         }
 
-        // GET: Addresses/Edit/5
+        // GET: Departments/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            Console.WriteLine(id);
             if (id == null)
             {
                 return NotFound();
             }
 
-            var address = await _context.Address.FindAsync(id);
-            Console.WriteLine("Addressl ", address);
-            if (address == null)
+            var department = await _context.Department.FindAsync(id);
+            if (department == null)
             {
                 return NotFound();
             }
-            return View(address);
+            return View(department);
         }
 
-        // POST: Addresses/Edit/5
+        // POST: Departments/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("AddressId,Country,City,Zip")] Address address)
+        public async Task<IActionResult> Edit(string id, [Bind("DepartmentId,Name,Description")] Department department)
         {
-            if (id != address.AddressId)
+            if (id != department.DepartmentId)
             {
                 return NotFound();
             }
@@ -98,12 +96,12 @@ namespace berkley_coursework.Controllers
             {
                 try
                 {
-                    _context.Update(address);
+                    _context.Update(department);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AddressExists(address.AddressId))
+                    if (!DepartmentExists(department.DepartmentId))
                     {
                         return NotFound();
                     }
@@ -114,10 +112,10 @@ namespace berkley_coursework.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(address);
+            return View(department);
         }
 
-        // GET: Addresses/Delete/5
+        // GET: Departments/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -125,30 +123,30 @@ namespace berkley_coursework.Controllers
                 return NotFound();
             }
 
-            var address = await _context.Address
-                .FirstOrDefaultAsync(m => m.AddressId == id);
-            if (address == null)
+            var department = await _context.Department
+                .FirstOrDefaultAsync(m => m.DepartmentId == id);
+            if (department == null)
             {
                 return NotFound();
             }
 
-            return View(address);
+            return View(department);
         }
 
-        // POST: Addresses/Delete/5
+        // POST: Departments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var address = await _context.Address.FindAsync(id);
-            _context.Address.Remove(address);
+            var department = await _context.Department.FindAsync(id);
+            _context.Department.Remove(department);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AddressExists(string id)
+        private bool DepartmentExists(string id)
         {
-            return _context.Address.Any(e => e.AddressId == id);
+            return _context.Department.Any(e => e.DepartmentId == id);
         }
     }
 }

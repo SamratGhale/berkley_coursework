@@ -5,6 +5,7 @@ namespace berkley_coursework.Models
 {
     public partial class TeacherModule
     {
+        public string ID { get; set; }
         public string TeacherId { get; set; }
         public string ModuleId { get; set; }
 

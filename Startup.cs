@@ -1,5 +1,7 @@
+using berkley_coursework.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,6 +16,7 @@ namespace berkley_coursework
     {
         public Startup(IConfiguration configuration)
         {
+            var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
             Configuration = configuration;
         }
 
@@ -23,6 +26,7 @@ namespace berkley_coursework
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<ModelContext>(options => options.UseOracle(Configuration.GetConnectionString("DEV"), b=>b.UseOracleSQLCompatibility("11")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

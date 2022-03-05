@@ -9,22 +9,23 @@ using berkley_coursework.Models;
 
 namespace berkley_coursework.Controllers
 {
-    public class AddressesController : Controller
+    public class StudentsController : Controller
     {
         private readonly ModelContext _context;
 
-        public AddressesController(ModelContext context)
+        public StudentsController(ModelContext context)
         {
             _context = context;
         }
 
-        // GET: Addresses
+        // GET: Students
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Address.ToListAsync());
+            var modelContext = _context.Student.Include(s => s.Course).Include(s => s.Person);
+            return View(await modelContext.ToListAsync());
         }
 
-        // GET: Addresses/Details/5
+        // GET: Students/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -32,64 +33,70 @@ namespace berkley_coursework.Controllers
                 return NotFound();
             }
 
-            var address = await _context.Address
-                .FirstOrDefaultAsync(m => m.AddressId == id);
-            if (address == null)
+            var student = await _context.Student
+                .Include(s => s.Course)
+                .Include(s => s.Person)
+                .FirstOrDefaultAsync(m => m.StudentId == id);
+            if (student == null)
             {
                 return NotFound();
             }
 
-            return View(address);
+            return View(student);
         }
 
-        // GET: Addresses/Create
+        // GET: Students/Create
         public IActionResult Create()
         {
+            ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "CourseId");
+            ViewData["PersonId"] = new SelectList(_context.Person, "PersonId", "PersonId");
             return View();
         }
 
-        // POST: Addresses/Create
+        // POST: Students/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AddressId,Country,City,Zip")] Address address)
+        public async Task<IActionResult> Create([Bind("StudentId,PersonId,CourseId,Year")] Student student)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(address);
+                _context.Add(student);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(address);
+            ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "CourseId", student.CourseId);
+            ViewData["PersonId"] = new SelectList(_context.Person, "PersonId", "PersonId", student.PersonId);
+            return View(student);
         }
 
-        // GET: Addresses/Edit/5
+        // GET: Students/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            Console.WriteLine(id);
             if (id == null)
             {
                 return NotFound();
             }
 
-            var address = await _context.Address.FindAsync(id);
-            Console.WriteLine("Addressl ", address);
-            if (address == null)
+            var student = await _context.Student.FindAsync(id);
+            if (student == null)
             {
                 return NotFound();
             }
-            return View(address);
+            ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "CourseId", student.CourseId);
+            ViewData["PersonId"] = new SelectList(_context.Person, "PersonId", "PersonId", student.PersonId);
+            return View(student);
         }
 
-        // POST: Addresses/Edit/5
+        // POST: Students/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("AddressId,Country,City,Zip")] Address address)
+        public async Task<IActionResult> Edit(string id, [Bind("StudentId,PersonId,CourseId,Year")] Student student)
         {
-            if (id != address.AddressId)
+            if (id != student.StudentId)
             {
                 return NotFound();
             }
@@ -98,12 +105,12 @@ namespace berkley_coursework.Controllers
             {
                 try
                 {
-                    _context.Update(address);
+                    _context.Update(student);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AddressExists(address.AddressId))
+                    if (!StudentExists(student.StudentId))
                     {
                         return NotFound();
                     }
@@ -114,10 +121,12 @@ namespace berkley_coursework.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(address);
+            ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "CourseId", student.CourseId);
+            ViewData["PersonId"] = new SelectList(_context.Person, "PersonId", "PersonId", student.PersonId);
+            return View(student);
         }
 
-        // GET: Addresses/Delete/5
+        // GET: Students/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -125,30 +134,32 @@ namespace berkley_coursework.Controllers
                 return NotFound();
             }
 
-            var address = await _context.Address
-                .FirstOrDefaultAsync(m => m.AddressId == id);
-            if (address == null)
+            var student = await _context.Student
+                .Include(s => s.Course)
+                .Include(s => s.Person)
+                .FirstOrDefaultAsync(m => m.StudentId == id);
+            if (student == null)
             {
                 return NotFound();
             }
 
-            return View(address);
+            return View(student);
         }
 
-        // POST: Addresses/Delete/5
+        // POST: Students/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var address = await _context.Address.FindAsync(id);
-            _context.Address.Remove(address);
+            var student = await _context.Student.FindAsync(id);
+            _context.Student.Remove(student);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AddressExists(string id)
+        private bool StudentExists(string id)
         {
-            return _context.Address.Any(e => e.AddressId == id);
+            return _context.Student.Any(e => e.StudentId == id);
         }
     }
 }

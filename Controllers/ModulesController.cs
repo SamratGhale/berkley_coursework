@@ -9,22 +9,22 @@ using berkley_coursework.Models;
 
 namespace berkley_coursework.Controllers
 {
-    public class AddressesController : Controller
+    public class ModulesController : Controller
     {
         private readonly ModelContext _context;
 
-        public AddressesController(ModelContext context)
+        public ModulesController(ModelContext context)
         {
             _context = context;
         }
 
-        // GET: Addresses
+        // GET: Modules
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Address.ToListAsync());
+            return View(await _context.Module.ToListAsync());
         }
 
-        // GET: Addresses/Details/5
+        // GET: Modules/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -32,64 +32,62 @@ namespace berkley_coursework.Controllers
                 return NotFound();
             }
 
-            var address = await _context.Address
-                .FirstOrDefaultAsync(m => m.AddressId == id);
-            if (address == null)
+            var @module = await _context.Module
+                .FirstOrDefaultAsync(m => m.ModuleId == id);
+            if (@module == null)
             {
                 return NotFound();
             }
 
-            return View(address);
+            return View(@module);
         }
 
-        // GET: Addresses/Create
+        // GET: Modules/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Addresses/Create
+        // POST: Modules/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AddressId,Country,City,Zip")] Address address)
+        public async Task<IActionResult> Create([Bind("ModuleId,Code,Name,Credit,TeachingDays")] Module @module)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(address);
+                _context.Add(@module);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(address);
+            return View(@module);
         }
 
-        // GET: Addresses/Edit/5
+        // GET: Modules/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            Console.WriteLine(id);
             if (id == null)
             {
                 return NotFound();
             }
 
-            var address = await _context.Address.FindAsync(id);
-            Console.WriteLine("Addressl ", address);
-            if (address == null)
+            var @module = await _context.Module.FindAsync(id);
+            if (@module == null)
             {
                 return NotFound();
             }
-            return View(address);
+            return View(@module);
         }
 
-        // POST: Addresses/Edit/5
+        // POST: Modules/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("AddressId,Country,City,Zip")] Address address)
+        public async Task<IActionResult> Edit(string id, [Bind("ModuleId,Code,Name,Credit,TeachingDays")] Module @module)
         {
-            if (id != address.AddressId)
+            if (id != @module.ModuleId)
             {
                 return NotFound();
             }
@@ -98,12 +96,12 @@ namespace berkley_coursework.Controllers
             {
                 try
                 {
-                    _context.Update(address);
+                    _context.Update(@module);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AddressExists(address.AddressId))
+                    if (!ModuleExists(@module.ModuleId))
                     {
                         return NotFound();
                     }
@@ -114,10 +112,10 @@ namespace berkley_coursework.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(address);
+            return View(@module);
         }
 
-        // GET: Addresses/Delete/5
+        // GET: Modules/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -125,30 +123,30 @@ namespace berkley_coursework.Controllers
                 return NotFound();
             }
 
-            var address = await _context.Address
-                .FirstOrDefaultAsync(m => m.AddressId == id);
-            if (address == null)
+            var @module = await _context.Module
+                .FirstOrDefaultAsync(m => m.ModuleId == id);
+            if (@module == null)
             {
                 return NotFound();
             }
 
-            return View(address);
+            return View(@module);
         }
 
-        // POST: Addresses/Delete/5
+        // POST: Modules/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var address = await _context.Address.FindAsync(id);
-            _context.Address.Remove(address);
+            var @module = await _context.Module.FindAsync(id);
+            _context.Module.Remove(@module);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AddressExists(string id)
+        private bool ModuleExists(string id)
         {
-            return _context.Address.Any(e => e.AddressId == id);
+            return _context.Module.Any(e => e.ModuleId == id);
         }
     }
 }

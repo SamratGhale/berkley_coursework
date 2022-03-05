@@ -35,8 +35,8 @@ namespace berkley_coursework.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseOracle("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=xe)));User ID=college_admin;Password=9828;Persist Security Info=True");
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                //optionsBuilder.UseOracle("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=xe)));User ID=college_admin;Password=9828;Persist Security Info=True");
             }
         }
 
@@ -88,7 +88,8 @@ namespace berkley_coursework.Models
 
             modelBuilder.Entity<Attendance>(entity =>
             {
-                entity.HasNoKey();
+
+                //entity.HasNoKey();
 
                 entity.ToTable("ATTENDANCE");
 
@@ -256,7 +257,7 @@ namespace berkley_coursework.Models
 
             modelBuilder.Entity<ModuleAssignment>(entity =>
             {
-                entity.HasNoKey();
+                //entity.HasNoKey();
 
                 entity.ToTable("MODULE_ASSIGNMENT");
 
@@ -293,7 +294,7 @@ namespace berkley_coursework.Models
 
             modelBuilder.Entity<ModuleCourse>(entity =>
             {
-                entity.HasNoKey();
+                //entity.HasNoKey();
 
                 entity.ToTable("MODULE_COURSE");
 
@@ -509,7 +510,7 @@ namespace berkley_coursework.Models
 
             modelBuilder.Entity<TeacherModule>(entity =>
             {
-                entity.HasNoKey();
+                //entity.HasNoKey();
 
                 entity.ToTable("TEACHER_MODULE");
 

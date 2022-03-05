@@ -9,22 +9,22 @@ using berkley_coursework.Models;
 
 namespace berkley_coursework.Controllers
 {
-    public class AddressesController : Controller
+    public class CoursesController : Controller
     {
         private readonly ModelContext _context;
 
-        public AddressesController(ModelContext context)
+        public CoursesController(ModelContext context)
         {
             _context = context;
         }
 
-        // GET: Addresses
+        // GET: Courses
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Address.ToListAsync());
+            return View(await _context.Course.ToListAsync());
         }
 
-        // GET: Addresses/Details/5
+        // GET: Courses/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -32,64 +32,62 @@ namespace berkley_coursework.Controllers
                 return NotFound();
             }
 
-            var address = await _context.Address
-                .FirstOrDefaultAsync(m => m.AddressId == id);
-            if (address == null)
+            var course = await _context.Course
+                .FirstOrDefaultAsync(m => m.CourseId == id);
+            if (course == null)
             {
                 return NotFound();
             }
 
-            return View(address);
+            return View(course);
         }
 
-        // GET: Addresses/Create
+        // GET: Courses/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Addresses/Create
+        // POST: Courses/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AddressId,Country,City,Zip")] Address address)
+        public async Task<IActionResult> Create([Bind("CourseId,Name,Years,Fee")] Course course)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(address);
+                _context.Add(course);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(address);
+            return View(course);
         }
 
-        // GET: Addresses/Edit/5
+        // GET: Courses/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            Console.WriteLine(id);
             if (id == null)
             {
                 return NotFound();
             }
 
-            var address = await _context.Address.FindAsync(id);
-            Console.WriteLine("Addressl ", address);
-            if (address == null)
+            var course = await _context.Course.FindAsync(id);
+            if (course == null)
             {
                 return NotFound();
             }
-            return View(address);
+            return View(course);
         }
 
-        // POST: Addresses/Edit/5
+        // POST: Courses/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("AddressId,Country,City,Zip")] Address address)
+        public async Task<IActionResult> Edit(string id, [Bind("CourseId,Name,Years,Fee")] Course course)
         {
-            if (id != address.AddressId)
+            if (id != course.CourseId)
             {
                 return NotFound();
             }
@@ -98,12 +96,12 @@ namespace berkley_coursework.Controllers
             {
                 try
                 {
-                    _context.Update(address);
+                    _context.Update(course);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AddressExists(address.AddressId))
+                    if (!CourseExists(course.CourseId))
                     {
                         return NotFound();
                     }
@@ -114,10 +112,10 @@ namespace berkley_coursework.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(address);
+            return View(course);
         }
 
-        // GET: Addresses/Delete/5
+        // GET: Courses/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -125,30 +123,30 @@ namespace berkley_coursework.Controllers
                 return NotFound();
             }
 
-            var address = await _context.Address
-                .FirstOrDefaultAsync(m => m.AddressId == id);
-            if (address == null)
+            var course = await _context.Course
+                .FirstOrDefaultAsync(m => m.CourseId == id);
+            if (course == null)
             {
                 return NotFound();
             }
 
-            return View(address);
+            return View(course);
         }
 
-        // POST: Addresses/Delete/5
+        // POST: Courses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var address = await _context.Address.FindAsync(id);
-            _context.Address.Remove(address);
+            var course = await _context.Course.FindAsync(id);
+            _context.Course.Remove(course);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AddressExists(string id)
+        private bool CourseExists(string id)
         {
-            return _context.Address.Any(e => e.AddressId == id);
+            return _context.Course.Any(e => e.CourseId == id);
         }
     }
 }

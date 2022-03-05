@@ -5,6 +5,8 @@ namespace berkley_coursework.Models
 {
     public partial class Attendance
     {
+        public string AttendanceID { get; set; }
+
         public string StudentId { get; set; }
         public string ModuleId { get; set; }
         public decimal? AttendanceCount { get; set; }

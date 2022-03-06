@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace berkley_coursework.Models
 {
@@ -11,5 +12,7 @@ namespace berkley_coursework.Models
         public decimal Salary { get; set; }
 
         public virtual Person Person { get; set; }
+        [NotMapped]
+        public virtual ICollection<Module> Modules { get; set; }
     }
 }

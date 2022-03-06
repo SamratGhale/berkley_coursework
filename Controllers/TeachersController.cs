@@ -9,23 +9,23 @@ using berkley_coursework.Models;
 
 namespace berkley_coursework.Controllers
 {
-    public class StudentsController : Controller
+    public class TeachersController : Controller
     {
         private readonly ModelContext _context;
 
-        public StudentsController(ModelContext context)
+        public TeachersController(ModelContext context)
         {
             _context = context;
         }
 
-        // GET: Students
+        // GET: Teachers
         public async Task<IActionResult> Index()
         {
-            var modelContext = _context.Student.Include(s => s.Course).Include(s => s.Person).Include(s=>s.Person);
+            var modelContext = _context.Teacher.Include(t => t.Person);
             return View(await modelContext.ToListAsync());
         }
 
-        // GET: Students/Details/5
+        // GET: Teachers/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -33,45 +33,51 @@ namespace berkley_coursework.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Student
-                .Include(s => s.Course)
-                .Include(s => s.Person)
-                .FirstOrDefaultAsync(m => m.StudentId == id);
-            if (student == null)
+            var teacher = await _context.Teacher
+                .Include(t => t.Person)
+                .FirstOrDefaultAsync(m => m.TeacherId == id);
+
+            //List<TeacherModule> tms = await _context.TeacherModule.FromSqlRaw($"select module_id from college_admin.teacher_module where teacher_id = '{id}'").ToListAsync();
+            teacher.Modules = await _context.Module.FromSqlRaw($"select * from module where module_id in (select module_id from college_admin.teacher_module where teacher_id = '{id}')").ToListAsync();
+
+            /*
+            var TeacherModuleContext = _context.TeacherModule.Include(t => t.Module);
+            var modules = await TeacherModuleContext.ToListAsync();
+            */
+
+            if (teacher == null)
             {
                 return NotFound();
             }
 
-            return View(student);
+            return View(teacher);
         }
 
-        // GET: Students/Create
+        // GET: Teachers/Create
         public IActionResult Create()
         {
-            ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "CourseId");
             ViewData["PersonId"] = new SelectList(_context.Person, "PersonId", "PersonId");
             return View();
         }
 
-        // POST: Students/Create
+        // POST: Teachers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StudentId,PersonId,CourseId,Year")] Student student)
+        public async Task<IActionResult> Create([Bind("TeacherId,PersonId,Type,Salary")] Teacher teacher)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(student);
+                _context.Add(teacher);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "CourseId", student.CourseId);
-            ViewData["PersonId"] = new SelectList(_context.Person, "PersonId", "PersonId", student.PersonId);
-            return View(student);
+            ViewData["PersonId"] = new SelectList(_context.Person, "PersonId", "PersonId", teacher.PersonId);
+            return View(teacher);
         }
 
-        // GET: Students/Edit/5
+        // GET: Teachers/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -79,24 +85,23 @@ namespace berkley_coursework.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Student.FindAsync(id);
-            if (student == null)
+            var teacher = await _context.Teacher.FindAsync(id);
+            if (teacher == null)
             {
                 return NotFound();
             }
-            ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "CourseId", student.CourseId);
-            ViewData["PersonId"] = new SelectList(_context.Person, "PersonId", "PersonId", student.PersonId);
-            return View(student);
+            ViewData["PersonId"] = new SelectList(_context.Person, "PersonId", "PersonId", teacher.PersonId);
+            return View(teacher);
         }
 
-        // POST: Students/Edit/5
+        // POST: Teachers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("StudentId,PersonId,CourseId,Year")] Student student)
+        public async Task<IActionResult> Edit(string id, [Bind("TeacherId,PersonId,Type,Salary")] Teacher teacher)
         {
-            if (id != student.StudentId)
+            if (id != teacher.TeacherId)
             {
                 return NotFound();
             }
@@ -105,12 +110,12 @@ namespace berkley_coursework.Controllers
             {
                 try
                 {
-                    _context.Update(student);
+                    _context.Update(teacher);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StudentExists(student.StudentId))
+                    if (!TeacherExists(teacher.TeacherId))
                     {
                         return NotFound();
                     }
@@ -121,12 +126,11 @@ namespace berkley_coursework.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CourseId"] = new SelectList(_context.Course, "CourseId", "CourseId", student.CourseId);
-            ViewData["PersonId"] = new SelectList(_context.Person, "PersonId", "PersonId", student.PersonId);
-            return View(student);
+            ViewData["PersonId"] = new SelectList(_context.Person, "PersonId", "PersonId", teacher.PersonId);
+            return View(teacher);
         }
 
-        // GET: Students/Delete/5
+        // GET: Teachers/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -134,32 +138,31 @@ namespace berkley_coursework.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Student
-                .Include(s => s.Course)
-                .Include(s => s.Person)
-                .FirstOrDefaultAsync(m => m.StudentId == id);
-            if (student == null)
+            var teacher = await _context.Teacher
+                .Include(t => t.Person)
+                .FirstOrDefaultAsync(m => m.TeacherId == id);
+            if (teacher == null)
             {
                 return NotFound();
             }
 
-            return View(student);
+            return View(teacher);
         }
 
-        // POST: Students/Delete/5
+        // POST: Teachers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var student = await _context.Student.FindAsync(id);
-            _context.Student.Remove(student);
+            var teacher = await _context.Teacher.FindAsync(id);
+            _context.Teacher.Remove(teacher);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool StudentExists(string id)
+        private bool TeacherExists(string id)
         {
-            return _context.Student.Any(e => e.StudentId == id);
+            return _context.Teacher.Any(e => e.TeacherId == id);
         }
     }
 }

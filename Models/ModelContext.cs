@@ -510,7 +510,7 @@ namespace berkley_coursework.Models
 
             modelBuilder.Entity<TeacherModule>(entity =>
             {
-                //entity.HasNoKey();
+                entity.HasNoKey();
 
                 entity.ToTable("TEACHER_MODULE");
 

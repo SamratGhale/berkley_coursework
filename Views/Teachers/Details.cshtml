@@ -1,0 +1,80 @@
+﻿@model berkeley_college.Models.Teacher
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Teacher</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Salary)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Salary)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Person)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Person.PersonId)
+        </dd>
+    </dl>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Code
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Credit
+                </th>
+                <th>
+                    Teaching Days
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Modules)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Credit)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TeachingDays)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-controller="Modules" asp-route-id="@item.ModuleId">Edit</a> |
+                        <a asp-action="Details"asp-controller="Modules"  asp-route-id="@item.ModuleId">Details</a> |
+                        <a asp-action="Delete" asp-controller="Modules" asp-route-id="@item.ModuleId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.TeacherId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

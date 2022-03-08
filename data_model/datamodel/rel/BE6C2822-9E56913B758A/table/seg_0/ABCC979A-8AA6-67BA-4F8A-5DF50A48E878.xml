@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="ABCC979A-8AA6-67BA-4F8A-5DF50A48E878" name="person">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:22:46 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<ordsAlias>table_2</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="last_name" id="1F20B55A-7BD7-9FAE-865A-846DB79575D7">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:23:22 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="first_name" id="2FFBF496-0721-4B8C-8FFD-EF6B7A45F267">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:23:30 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="person_id" id="56EB0816-A3F9-18DE-45C5-EC79801490EC">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:24:50 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="address_id" id="0CAD9015-98A1-CB16-6E4F-5D9D10C9AE1F">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:25:15 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7ACA0E48-3709-1A7C-CB95-60D6B69BAAFF" referredColumn="ED0FA3A1-C4E8-99D5-8FEE-55EDBB86B5E7"/>
+</associations>
+</Column>
+<Column name="email" id="6A2658DA-9B9C-64BC-5B0D-D0AF9897856B">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:20:40 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="79A8699B-9BF8-1DA1-CF89-E5F44F95E1F9" name="person_PK">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:24:50 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="56EB0816-A3F9-18DE-45C5-EC79801490EC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7966D532-6545-6290-C85B-E0CFD8333987" name="person_Address_FK">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:28:25 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0CAD9015-98A1-CB16-6E4F-5D9D10C9AE1F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

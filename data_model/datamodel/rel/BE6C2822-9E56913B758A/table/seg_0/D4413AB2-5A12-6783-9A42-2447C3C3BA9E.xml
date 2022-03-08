@@ -1,0 +1,97 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D4413AB2-5A12-6783-9A42-2447C3C3BA9E" name="attendance">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:03:16 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<ordsAlias>table_19</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="student_id" id="7772A9D2-08BE-8CED-AE13-599AEF7DEE8A">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:03:43 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EB2ABBFB-8A04-5555-06FE-FDD764D71987" referredColumn="630310BF-14CD-E816-4E15-094A0FC31484"/>
+</associations>
+</Column>
+<Column name="module_id" id="01892689-7CFE-A495-2A17-855ED3C7B6FD">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:04:15 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7277D494-2D3B-C72E-C0B9-EBDE21660506" referredColumn="919446F0-B28C-8A7D-AC28-88812CF9B98D"/>
+</associations>
+</Column>
+<Column name="attendance_date" id="68A404F2-6BD7-BA63-0F41-1DD2DA0854A5">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:04:34 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="department_id" id="CEF1ABCD-BC99-DE26-D73E-F7952E432971">
+<createdBy>samra</createdBy>
+<createdTime>2022-03-08 08:32:39 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F3ADF320-90D5-B315-EBBE-897E9123EB79" referredColumn="229FAF8D-54D3-E247-FE7F-CA395D5BC03A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FA5B1471-5F2C-8446-E5FD-F936A7198EB2" name="attendance_Student_FK">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:05:06 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7772A9D2-08BE-8CED-AE13-599AEF7DEE8A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="38092306-4400-A190-EF75-B85ABA125FCC" name="attendance_module_FK">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:05:22 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="01892689-7CFE-A495-2A17-855ED3C7B6FD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8C2E2386-51C9-EDED-E26F-6C72B0D566F4" name="attendance_Department_FK">
+<createdBy>samra</createdBy>
+<createdTime>2022-03-08 08:33:01 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CEF1ABCD-BC99-DE26-D73E-F7952E432971"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

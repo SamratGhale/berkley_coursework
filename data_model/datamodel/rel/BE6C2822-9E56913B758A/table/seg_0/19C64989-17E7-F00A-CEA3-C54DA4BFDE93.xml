@@ -1,0 +1,130 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="19C64989-17E7-F00A-CEA3-C54DA4BFDE93" name="result">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:11:36 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<ordsAlias>table_20</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="result_id" id="B9890F28-DE8C-B88B-7CCF-663B86E95ABA">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:11:54 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="module_id" id="23B910E1-745D-2647-FED2-9E0E97EF2BE7">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:12:13 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D9ACA113-49C0-13ED-F175-FEE970D00DAB" referredColumn="919446F0-B28C-8A7D-AC28-88812CF9B98D"/>
+</associations>
+</Column>
+<Column name="assignment_id" id="D0A775A3-8735-2611-3B32-D25C27315E27">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:12:35 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="772894B3-7C28-7180-E446-43B64CDF0627" referredColumn="FB79A98B-D330-20C4-A22D-2292BB90F2FE"/>
+</associations>
+</Column>
+<Column name="student_id" id="E598B232-DE73-63B2-D06E-7064ED0D9173">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:12:49 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DA9D70D9-504F-66F0-7B04-FDDB590C0776" referredColumn="630310BF-14CD-E816-4E15-094A0FC31484"/>
+</associations>
+</Column>
+<Column name="grade" id="6230DB01-B44C-2221-3B22-24FA0ADF3498">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:14:38 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="status" id="64A7C904-D3AB-E4CE-19B6-E1E17EE0F945">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:15:03 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FB7057BF-66C8-344B-53B3-C8B741279217" name="exam_PK">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:11:54 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B9890F28-DE8C-B88B-7CCF-663B86E95ABA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8638E7FC-BCDF-717A-0E53-694D7D15E704" name="exam_module_FK">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:15:32 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="23B910E1-745D-2647-FED2-9E0E97EF2BE7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6EEFF3BC-503E-F98A-1AE6-574267B5ACFB" name="exam_Student_FK">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:15:53 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E598B232-DE73-63B2-D06E-7064ED0D9173"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="20DF8236-1A4C-FAEF-453F-7ADA977403F8" name="exam_assignment_FK">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:16:12 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D0A775A3-8735-2611-3B32-D25C27315E27"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

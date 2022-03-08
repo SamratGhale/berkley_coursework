@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="337F321D-5E30-AEC4-9CCF-C2D43E64BF0C" name="module_assignment">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:56:29 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<ordsAlias>table_17</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="assignment_id" id="D8B91B2C-AE34-2D0D-9E53-DC881A49A200">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:57:23 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="80A4DA7A-3351-A545-A89F-99B76ACED3ED" referredColumn="FB79A98B-D330-20C4-A22D-2292BB90F2FE"/>
+</associations>
+</Column>
+<Column name="module_id" id="1F762594-5B23-0168-C967-BE0BFD51F226">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:58:29 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B97E71BF-5961-3430-3457-63E3FE2EBFE7" referredColumn="919446F0-B28C-8A7D-AC28-88812CF9B98D"/>
+</associations>
+</Column>
+<Column name="type" id="8E8472AD-1D4A-801F-3A13-7B49D789A588">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:58:45 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="185D7CAA-7830-8807-93D2-924AC619F1CB" name="module_assignment_FK">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:00:18 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D8B91B2C-AE34-2D0D-9E53-DC881A49A200"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D89B8B3A-CA3B-6BC9-4769-06E1BBF8910D" name="module_assignment_FK1">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:00:47 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1F762594-5B23-0168-C967-BE0BFD51F226"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

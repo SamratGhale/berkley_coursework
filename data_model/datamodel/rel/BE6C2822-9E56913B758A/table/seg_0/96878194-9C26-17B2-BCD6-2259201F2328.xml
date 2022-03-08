@@ -1,0 +1,82 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="96878194-9C26-17B2-BCD6-2259201F2328" name="teacher">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:18:34 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<ordsAlias>table_23</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="teacher_id" id="D3149A0C-99C3-D80A-A458-B339AA07CEE5">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:18:56 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="person_id" id="1C11C8A5-4E17-206B-C6EF-453B91577689">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:19:30 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="292EE847-1013-9778-AF1B-E1FDD557578E" referredColumn="56EB0816-A3F9-18DE-45C5-EC79801490EC"/>
+</associations>
+</Column>
+<Column name="type" id="B7685157-731D-350E-BF39-08B5F811E79C">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:23:36 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="salary" id="23FBA31B-947C-F181-BD1C-EB06D830CA00">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:42:39 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F332D8EF-1DDC-7CE7-48F6-3A0A780EE41F" name="teacher_PK">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:19:02 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D3149A0C-99C3-D80A-A458-B339AA07CEE5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BE92E9B3-2082-1AB2-4323-D649B266CB48" name="teacher_person_FK">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:24:18 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1C11C8A5-4E17-206B-C6EF-453B91577689"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,114 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="046F336F-539A-74DF-5E02-B0BEC3F75D1C" name="Payment">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:38:24 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<ordsAlias>table_6</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="payment_id" id="68EF33ED-1734-34D0-9BA9-D62C0568183A">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:39:17 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="student_id" id="124582A7-05F6-6CAF-6B9B-5972DBBD9607">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:39:28 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AAE2F353-92B7-8089-2121-0E204DDD1F8D" referredColumn="630310BF-14CD-E816-4E15-094A0FC31484"/>
+</associations>
+</Column>
+<Column name="amount" id="12E0D79B-AD04-30F2-1F8B-6613F4D14C46">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:39:42 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="year" id="3DAFF7D1-9A1D-FA5F-7850-8E8083440B2C">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:39:49 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date" id="4F7EF7DA-631E-8891-6592-EDA3551FC71B">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:41:47 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="department_id" id="B2C2A257-5FC9-BFAD-DDA4-B14B7F1BA1C6">
+<createdBy>samra</createdBy>
+<createdTime>2022-03-08 08:36:05 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A33E1F67-DFBB-3A49-1CE5-224A1DDA36E3" referredColumn="229FAF8D-54D3-E247-FE7F-CA395D5BC03A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DE216E66-C473-03BD-D207-C9408D18F8A9" name="Payment_PK">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:39:17 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="68EF33ED-1734-34D0-9BA9-D62C0568183A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="33D464E8-5BAF-D79D-30B6-9F3737654E79" name="Payment_Student_FK">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:40:23 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="124582A7-05F6-6CAF-6B9B-5972DBBD9607"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A54B108C-8E98-6CE4-BD69-E5AB088E6CB4" name="Payment_Department_FK">
+<createdBy>samra</createdBy>
+<createdTime>2022-03-08 08:39:08 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B2C2A257-5FC9-BFAD-DDA4-B14B7F1BA1C6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

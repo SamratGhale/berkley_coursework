@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="33A50545-FB06-BDAB-4836-76AA8557F25D" name="module_course">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:51:26 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<ordsAlias>table_14</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="course_id" id="98806FAB-8091-8D3D-D2CD-C63F5420FCF9">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:51:55 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DFF546DF-D982-3B9D-AD09-F8FD33279B08" referredColumn="0749FFD7-19FB-D29B-9B26-4758A4FCD073"/>
+</associations>
+</Column>
+<Column name="module_id" id="57D94139-1299-1CAB-F62A-ACD9560492E8">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:52:10 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3CAD5206-82BF-CF22-62D9-53BE04855D4E" referredColumn="919446F0-B28C-8A7D-AC28-88812CF9B98D"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="CFBB0162-F40A-481B-0E8D-607D7BB1D093" name="module_course_course_FK">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:53:10 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="98806FAB-8091-8D3D-D2CD-C63F5420FCF9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2D5430F5-C7B2-C4DA-58CD-7DE82C8D6844" name="module_course_module_FK">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 08:53:10 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="57D94139-1299-1CAB-F62A-ACD9560492E8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

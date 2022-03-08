@@ -59,6 +59,7 @@ insert into teacher_module values('t3','m4');
 insert into teacher_module values('t4','m5');
 insert into teacher_module values('t5','m5');
 
+insert into attendence values('
 
 
 

@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="7277D494-2D3B-C72E-C0B9-EBDE21660506" containerWithKeyObject="D4413AB2-5A12-6783-9A42-2447C3C3BA9E" localFKIndex="38092306-4400-A190-EF75-B85ABA125FCC" name="attendance_module_FK">
+<createdBy>samrat</createdBy>
+<createdTime>2022-03-03 09:05:22 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<referredTableLongName>module</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>7BE16BD2-02F9-E5EC-9CEF-9F86438AE646</referredTableID>
+<keyObject>B8349F29-4B41-B64F-FBFB-3D96A24C2CBD</keyObject>
+<referredKeyID>B8349F29-4B41-B64F-FBFB-3D96A24C2CBD</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>module_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

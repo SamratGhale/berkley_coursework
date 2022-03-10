@@ -37,6 +37,12 @@ namespace berkeley_college.Controllers
                 .Include(s => s.Course)
                 .Include(s => s.Person)
                 .FirstOrDefaultAsync(m => m.StudentId == id);
+            student.Payment = await _context.Payment.FromSqlRaw($"select * from payment where student_id = '{id}'").ToListAsync();
+            student.Result = await _context.Result.FromSqlRaw($"select * from result where student_id = '{id}'").ToListAsync();
+            foreach (Result r in student.Result)
+            {
+                r.Module = (await _context.Module.FromSqlRaw($"select * from module where module_id = '{r.ModuleId}'").ToListAsync())[0];
+            }
             if (student == null)
             {
                 return NotFound();

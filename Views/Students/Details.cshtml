@@ -10,25 +10,102 @@
     <h4>Student</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Year)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Year)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Course)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Course.CourseId)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Person)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Person.PersonId)
         </dd>
     </dl>
+
+    <h2>Payments</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                   Date 
+                </th>
+                <th>
+                   Amount 
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Payment)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-controller="Payments" asp-route-id="@item.PaymentId">Edit</a> |
+                        <a asp-action="Details" asp-controller="Payments" asp-route-id="@item.PaymentId">Details</a> |
+                        <a asp-action="Delete" asp-controller="Payments" asp-route-id="@item.PaymentId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h2>Assignments</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                  Module code 
+                </th>
+                <th>
+                  Assignment ID 
+                </th>
+                <th>
+                  Grade
+                </th>
+                <th>
+                  Status
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Result)
+            {
+                <tr>
+                    <td>
+                        <a asp-action="Details" asp-controller="Modules" asp-route-id="@item.ModuleId">@Html.DisplayFor(modelItem => item.Module.Code)</a>
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-controller="Assignments" asp-route-id="@item.AssignmentId">@Html.DisplayFor(modelItem => item.AssignmentId)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Grade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-controller="Results" asp-route-id="@item.ResultId">Edit</a> |
+                        <a asp-action="Details" asp-controller="Results" asp-route-id="@item.ResultId">Details</a> |
+                        <a asp-action="Delete" asp-controller="Results" asp-route-id="@item.ResultId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.StudentId">Edit</a> |

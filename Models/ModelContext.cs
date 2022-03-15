@@ -508,7 +508,9 @@ namespace berkeley_college.Models
 
             modelBuilder.Entity<TeacherModule>(entity =>
             {
-                entity.HasNoKey();
+                entity.Property(e => e.Id)
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
 
                 entity.ToTable("TEACHER_MODULE");
 

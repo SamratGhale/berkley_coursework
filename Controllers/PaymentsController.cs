@@ -32,17 +32,13 @@ namespace berkeley_college.Controllers
             {
                 return NotFound();
             }
-
-            var payment = await _context.Payment
-                .Include(p => p.Department)
-                .Include(p => p.Student)
-                .FirstOrDefaultAsync(m => m.PaymentId == id);
-            if (payment == null)
-            {
-                return NotFound();
+            if(id == "Nope"){
+                id = (await _context.Payment.FromSqlRaw($"select * from payment").ToListAsync())[0].StudentId;
             }
-
-            return View(payment);
+            ViewData["StudentId"] = new SelectList(_context.Student, "StudentId", "StudentId");
+            ViewBag.student = (await _context.Student.FromSqlRaw($"select * from student where student_id = '{id}'").ToListAsync())[0];
+            ViewBag.payments = await _context.Payment.FromSqlRaw($"select * from payment where student_id='{id}'").ToListAsync();
+            return View();
         }
 
         // GET: Payments/Create

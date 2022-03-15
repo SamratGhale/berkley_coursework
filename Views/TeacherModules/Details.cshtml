@@ -1,0 +1,65 @@
+﻿@model berkeley_college.Models.Teacher
+
+@{
+    ViewData["Title"] = "Details";
+    var modules =(IEnumerable<Module>) ViewBag.Modules;
+}
+
+<h1>Modules</h1>
+<div class="form-group">
+    <form asp-action="Details">
+        <label asp-for="TeacherId" class="control-label"></label>
+        <select asp-for="TeacherId" onchange="OnChangeEvent(this);" class="form-control" asp-items="ViewBag.TeacherId"></select>
+    </form>
+</div>
+<div>
+    <h2>teacher id :<a asp-action="Details" asp-controller="Teachers" asp-route-id="@ViewBag.Teacher.TeacherId">@ViewBag.Teacher.TeacherId</a>  </h2>
+</div>
+<script type="text/javascript">
+ function OnChangeEvent(dropDownElement){
+  var selectedValue = dropDownElement.options[dropDownElement.selectedIndex].value;
+  document.location = "/teachermodules/details/" + selectedValue;
+ }
+</script>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Code
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Credit
+            </th>
+            <th>
+                Teaching days
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in modules) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Credit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeachingDays)
+            </td>
+            <td>
+                <a asp-controller="Modules" asp-action="Edit" asp-route-id="@item.ModuleId">Edit</a> |
+                <a asp-controller="Modules" asp-action="Details" asp-route-id="@item.ModuleId">Details</a> |
+                <a asp-controller="Modules" asp-action="Delete" asp-route-id="@item.ModuleId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

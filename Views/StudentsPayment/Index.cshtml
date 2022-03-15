@@ -1,11 +1,11 @@
-﻿@model berkeley_college.Models.Payment
+@model berkeley_college.Models.Payment
 
 @{
     ViewData["Title"] = "Details";
-    var Paymennts = (IEnumerable<Payment>)ViewBag.payments;
+    var Payments =(IEnumerable<Payment>) ViewBag.Payments;
 }
 
-<h1>Results</h1>
+<h1>Modules</h1>
 <div class="form-group">
     <form asp-action="Details">
         <label asp-for="StudentId" class="control-label"></label>
@@ -13,12 +13,12 @@
     </form>
 </div>
 <div>
-    <h2>Student id :<a asp-action="Details" asp-controller="Students" asp-route-id="@ViewBag.Student.StudentId">@ViewBag.Student.StudentId</a>  </h2>
+    <h2>student id :<a asp-action="Details" asp-controller="Students" asp-route-id="@ViewBag.Student.StudentId">@ViewBag.Student.StudentId</a>  </h2>
 </div>
 <script type="text/javascript">
  function OnChangeEvent(dropDownElement){
   var selectedValue = dropDownElement.options[dropDownElement.selectedIndex].value;
-  document.location = "/Payments/details/" + selectedValue;
+  document.location = "/StudentsPayment/Index/" + selectedValue;
  }
 </script>
 <table class="table">
@@ -43,7 +43,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Paymennts) {
+@foreach (var item in Payments) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Amount)
@@ -59,6 +59,11 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Student.StudentId)
+            </td>
+            <td>
+                <a asp-controller="Payments" asp-action="Edit" asp-route-id="@item.PaymentId">Edit</a> |
+                <a asp-controller="Payments" asp-action="Details" asp-route-id="@item.PaymentId">Details</a> |
+                <a asp-controller="Payments" asp-action="Delete" asp-route-id="@item.PaymentId">Delete</a>
             </td>
         </tr>
         }

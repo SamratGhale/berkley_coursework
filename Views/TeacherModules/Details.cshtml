@@ -9,11 +9,12 @@
 <div class="form-group">
     <form asp-action="Details">
         <label asp-for="TeacherId" class="control-label"></label>
-        <select asp-for="TeacherId" onchange="OnChangeEvent(this);" class="form-control" asp-items="ViewBag.TeacherId"></select>
+        <select asp-for="TeacherId" onchange="OnChangeEvent(this);" class="form-control" asp-items="ViewBag.TeacherId"><option selected>@ViewBag.Teacher.TeacherId</option></select>
     </form>
 </div>
 <div>
-    <h2>teacher id :<a asp-action="Details" asp-controller="Teachers" asp-route-id="@ViewBag.Teacher.TeacherId">@ViewBag.Teacher.TeacherId</a>  </h2>
+    <h3>teacher id :<a asp-action="Details" asp-controller="Teachers" asp-route-id="@ViewBag.Teacher.TeacherId">@ViewBag.Teacher.TeacherId</a>  </h3>
+    <h3>teacher Name: @ViewBag.Teacher.Person.FirstName  @ViewBag.Teacher.Person.LastName</h3>
 </div>
 <script type="text/javascript">
  function OnChangeEvent(dropDownElement){
@@ -53,11 +54,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TeachingDays)
-            </td>
-            <td>
-                <a asp-controller="Modules" asp-action="Edit" asp-route-id="@item.ModuleId">Edit</a> |
-                <a asp-controller="Modules" asp-action="Details" asp-route-id="@item.ModuleId">Details</a> |
-                <a asp-controller="Modules" asp-action="Delete" asp-route-id="@item.ModuleId">Delete</a>
             </td>
         </tr>
 }

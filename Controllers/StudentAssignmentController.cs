@@ -9,11 +9,11 @@ using berkeley_college.Models;
 
 namespace berkeley_college.Controllers
 {
-    public class StudentsPayment: Controller
+    public class StudentsAssignment: Controller
     {
         private readonly ModelContext _context;
 
-        public StudentsPayment(ModelContext context){
+        public StudentsAssignment(ModelContext context){
             _context = context;
         }
 
@@ -28,12 +28,8 @@ namespace berkeley_college.Controllers
             }
             ViewData["StudentId"] = new SelectList(_context.Student, "StudentId", "StudentId");
             ViewBag.student = (await _context.Student.FromSqlRaw($"select * from student where student_id = '{id}'").ToListAsync())[0];
-            ViewBag.student.Person = (await _context.Person.FromSqlRaw($"select * from person where person_id = '{ViewBag.student.PersonId}'").ToListAsync())[0];
+            ViewBag.student.Person = (await _context.Person.FromSqlRaw($"select * from person where person_id= '{ViewBag.student.PersonId}'").ToListAsync())[0];
             ViewBag.payments = await _context.Payment.FromSqlRaw($"select * from payment where student_id='{id}'").ToListAsync();
-
-            foreach(var payment in ViewBag.payments){
-                payment.Department = (await _context.Department.FromSqlRaw($"select * from Department where department_id= '{payment.DepartmentId}'").ToListAsync())[0];
-            }
             return View();
         }
     }

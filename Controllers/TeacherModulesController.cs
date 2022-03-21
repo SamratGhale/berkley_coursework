@@ -35,6 +35,7 @@ namespace berkeley_college.Controllers
             ViewData["TeacherId"] = new SelectList(_context.Teacher, "TeacherId", "TeacherId");
             ViewBag.Teacher = (await _context.Teacher.FromSqlRaw($"select * from teacher where teacher_id = '{id}'").ToListAsync())[0];
             ViewBag.Modules = await _context.Module.FromSqlRaw($"select * from module where module_id in (select module_id from teacher_module where teacher_id ='{id}')").ToListAsync();
+            ViewBag.Teacher.Person = (await _context.Person.FromSqlRaw($"select * from person where person_id  = '{ViewBag.Teacher.PersonId}'").ToListAsync())[0];
             return View();
 
         }

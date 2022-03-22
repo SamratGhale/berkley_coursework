@@ -9,7 +9,11 @@
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js">
 </script>
-<div id="chartContainer"></div>
+<div id="chartContainer1" style="width: 60%; height: 400px;display: inline-block;"></div>
+<br />
+<div id="chartContainer2" style="width: 60%; height: 400px;display: inline-block;"></div>
+<br />
+<div id="chartContainer3" style="width: 60%; height: 400px;display: inline-block;"></div>
 
 <script type="text/javascript">
 
@@ -22,7 +26,7 @@
                         label : mydata[i].Y
                     });
                 }
-        var chart = new CanvasJS.Chart("chartContainer", {
+        var chart = new CanvasJS.Chart("chartContainer1", {
             theme: "light2",
             animationEnabled: true,
             title: {
@@ -38,9 +42,62 @@
             }
             ]
         });
-        console.log(dataPoints)
 
+
+        var mydata2 = @Html.Raw(@ViewBag.DataPoints2)
+        var dataPoints2 = []
+                for(var i = 0 ; i< mydata2.length; i++){
+                    dataPoints2.push({
+                        y : mydata2[i].X,
+                        label : mydata2[i].Y
+                    });
+                }
+        var chart2 = new CanvasJS.Chart("chartContainer2", {
+            theme: "light2",
+            animationEnabled: true,
+            title: {
+                text: "@ViewBag.ChartTitle2"
+            },
+            subtitles: [
+                { text: "@ViewBag.ChartSubTitle2" }
+            ],
+            data: [
+            {
+                type: "@ViewBag.ChartType2", //change type to bar, line, area, pie, etc
+                dataPoints :dataPoints2
+            }
+            ]
+        });
+
+        var mydata3 = @Html.Raw(@ViewBag.DataPoints3)
+        var dataPoints3 = []
+                for(var i = 0 ; i< mydata3.length; i++){
+                    dataPoints3.push({
+                        y : mydata3[i].X,
+                        label : mydata3[i].Y
+                    });
+                }
+        var chart3 = new CanvasJS.Chart("chartContainer3", {
+            theme: "light2",
+            animationEnabled: true,
+            title: {
+                text: "@ViewBag.ChartTitle3"
+            },
+            subtitles: [
+                { text: "@ViewBag.ChartSubTitle3" }
+            ],
+            data: [
+            {
+                type: "@ViewBag.ChartType3", //change type to bar, line, area, pie, etc
+                dataPoints :dataPoints3
+            }
+            ]
+        });
         chart.render();
+        chart2.render();
+        chart3.render();
     };
 </script>
+
+
 
